@@ -8,11 +8,13 @@ public abstract class Pawn : MonoBehaviour
     public float moveSpeed;
     //Variable for turn speed
     public float turnSpeed;
+    //Variable for mover
+    public Mover mover;
     
     // Start is called before the first frame update
     public virtual void Start()
     {
-        
+        mover = GetComponent<Mover>(); 
     }
 
     // Update is called once per frame
