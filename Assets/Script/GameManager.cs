@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     //prefabs
     public GameObject PlayerControllerPrefab;
     public GameObject tankPawnPrefab;
+    public Transform playerSpawnTransform;
 
     //awake runs before start
     private void Awake()
@@ -26,15 +27,25 @@ public class GameManager : MonoBehaviour
     //start
     private void Start()
     {
-       // SpawnPlayer();
+        SpawnPlayer();
     }
-    //spawn player controller 
-    //GameObject newPlayerObj = Instantiate(PlayerControllerPrefab, Vector3.zero, Quaternion.identity) as GameObject;
 
-    public Transform playerSpawnTransform;
-    //spawn pawn and connect 
-    //GameObject newPawnObj = Instantiate(tankPawnPrefab, playerSpawnTransform.position, playerSpawnTransform.rotation) as GameObject;
-    
+    private void SpawnPlayer()
+    {
+        //spawn player controller 
+        GameObject newPlayerObj = Instantiate(PlayerControllerPrefab, Vector3.zero, Quaternion.identity) as GameObject;
 
-    
+        PlayerController newController = newPlayerObj.GetComponent<PlayerController>();
+
+        //spawn pawn and connect 
+        GameObject newPawnObj = Instantiate(tankPawnPrefab, playerSpawnTransform.position, playerSpawnTransform.rotation) as GameObject;
+
+        Pawn newPawn = newPawnObj.GetComponent<Pawn>();
+
+        newController.pawn = newPawn;
+    }
+
+
+
+
 }
