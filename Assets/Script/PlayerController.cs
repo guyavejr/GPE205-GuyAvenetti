@@ -2,17 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class PlayerController : Controller
 {
     public KeyCode moveForwardKey;
     public KeyCode moveBackwardsKey;
     public KeyCode rotateCounterClockwiseKey;
     public KeyCode rotateClockwiseKey;
+    public KeyCode shootKey;
 
     //start
     public override void Start()
     {
+        if (GameManager.instance != null)
+        {
+            if (GameManager.instance.players != null)
+            {
+                GameManager.instance.players.Add(this);
+            }
+        }
         base.Start();
+    }
+
+    public void OnDestroy()
+    {
+        if(GameManager.instance != null)
+        {
+            if (GameManager.instance.players != null)
+            {
+                GameManager.instance.players.Remove(this);
+            }
+        }
     }
 
     //update
@@ -46,5 +66,12 @@ public class PlayerController : Controller
         {
             pawn.RotateCounterClockwise();
         }
+
+        if (Input.GetKeyDown(shootKey))
+        {
+            pawn.Shoot();
+        }
     }
+
+
 }

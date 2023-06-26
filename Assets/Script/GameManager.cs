@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     public GameObject PlayerControllerPrefab;
     public GameObject tankPawnPrefab;
     public Transform playerSpawnTransform;
-
+    //list that holds players
+    public List<PlayerController> players;
     //awake runs before start
     private void Awake()
     {
@@ -44,8 +45,4 @@ public class GameManager : MonoBehaviour
 
         newController.pawn = newPawn;
     }
-
-
-
-
 }
