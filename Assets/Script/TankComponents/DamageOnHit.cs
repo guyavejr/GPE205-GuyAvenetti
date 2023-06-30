@@ -7,7 +7,7 @@ public class DamageOnHit : MonoBehaviour
     public float damageDone;
     public Pawn owner;
 
-    public void OnTriggerEnter(Collider other)
+    public void OnCollisionEnter(Collision other)
     {
         //get health from game object that has overlapping collider
         Health otherHealth = other.gameObject.GetComponent<Health>();

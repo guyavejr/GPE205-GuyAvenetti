@@ -36,18 +36,4 @@ public class TankShooter : Shooter
         Destroy(newBullet, lifespan);
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        //get health from game object that has overlapping collider
-        Health otherHealth = other.gameObject.GetComponent<Health>();
-        //damage if it has health
-        if (otherHealth != null)
-        {
-            //damage
-            Debug.Log("Damage Done");
-        }
-
-        //destroy ourselves
-        Destroy(gameObject);
-    }
 }

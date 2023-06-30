@@ -18,8 +18,7 @@ public class BulletPawn : MonoBehaviour
         //if it has one
         if (rb != null)
         {
-            //add force
-            //rb.AddForce(firepointTransform.forward * fireForece);
+
         }
     }
 

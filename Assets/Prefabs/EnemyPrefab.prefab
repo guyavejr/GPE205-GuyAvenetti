@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7199491723979049365}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.82, z: 0.63}
+  m_LocalPosition: {x: 0.03, y: 0.617, z: 1.001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,15 +45,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 346655837741d10498d78c30b3eb787e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 8.348626
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 346655837741d10498d78c30b3eb787e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.47246948
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 346655837741d10498d78c30b3eb787e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -57.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 346655837741d10498d78c30b3eb787e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -109,6 +109,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 346655837741d10498d78c30b3eb787e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3202114056408563388}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 346655837741d10498d78c30b3eb787e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2096065485571594823}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 346655837741d10498d78c30b3eb787e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3103389633937967727}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 346655837741d10498d78c30b3eb787e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7014253173920696263}
   m_SourcePrefab: {fileID: 100100000, guid: 346655837741d10498d78c30b3eb787e, type: 3}
 --- !u!1 &3642043132024441998 stripped
 GameObject:
@@ -127,14 +136,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6772b3ce8e82ca479a75b808a68c2cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 180
+  moveSpeed: 120
   turnSpeed: 360
   mover: {fileID: 0}
   shooter: {fileID: 0}
+  fireRate: 1.5
   BulletPrefab: {fileID: 5932163799162390500, guid: 35bc30abc0cc0df479678967aaa57990, type: 3}
-  fireForce: 1000
+  fireForce: 500
   damageDone: 10
-  BulletLifespan: 1.5
+  BulletLifespan: 3
 --- !u!114 &7393400148315742435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +165,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3642043132024441998}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -208,6 +218,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firepointTransform: {fileID: 1001197842191594534}
+--- !u!114 &2096065485571594823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3642043132024441998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdbaeaa2d1eab154fb1ad13b82a9bdb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 10
+  maxHealth: 10
+--- !u!114 &3103389633937967727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3642043132024441998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2353ff1844f1614c84f01e2468c0067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pawn: {fileID: 4313779640182761122}
+  target: {fileID: 0}
+  currentState: 0
+  lastStateChangeTime: 0
+  fleeDistance: 0
+  fieldOfView: 0
+  maxViewDistance: 0
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  waypointsStopDistance: 5.5
+  currentWaypoint: 0
+  alertwaypoints:
+  - {fileID: 0}
+  currentalertWaypoint: 0
+  hearingDistance: 0
+--- !u!114 &-7014253173920696263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3642043132024441998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 459880e32a2d7d1489a675f7d120b614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeDistance: 5
 --- !u!4 &4161592422016980532 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 346655837741d10498d78c30b3eb787e, type: 3}
