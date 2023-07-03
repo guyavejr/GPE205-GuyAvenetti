@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TankPawn : Pawn
+public class PatrolTankPawn : TankPawn
 {
 
     private float timeUntilNextEvent;
-
-
+    
+    
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
         timeUntilNextEvent = fireRate;
+        
     }
 
     // Update is called oncer per frame
@@ -24,7 +25,6 @@ public class TankPawn : Pawn
         {
             timeUntilNextEvent = fireRate;
         }
-
     }
 
     public override void MoveForward()
@@ -54,6 +54,12 @@ public class TankPawn : Pawn
         }
         
     }
+
+            //currentHealth = currentHealth + amount;
+            //currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+            //Debug.Log(source.name + "did" + amount + "heal to" + gameObject.name);
+            //Debug.Log(currentHealth);
+
     public override void RotateTowards(Vector3 targetPosition)
     {
         //find vector to target
@@ -67,11 +73,7 @@ public class TankPawn : Pawn
     public override void MoveSpeedBoost(float amount, Pawn source)
     {
         moveSpeed = moveSpeed + amount;
-        moveSpeed = Mathf.Clamp(moveSpeed, moveSpeed, maxMoveSpeed);  
-    }
-    
-    public override void DamageBoost(float amount, Pawn source)
-    {
-        damageDone = damageDone + amount; 
+        moveSpeed = Mathf.Clamp(moveSpeed, moveSpeed, maxMoveSpeed);
+        
     }
 }

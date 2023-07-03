@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AgresserAiController : AIController
+public class AggressorAiController : AIController
 {
     public override void Start()
     {
         base.Update();
+        DoIdleAggressor();
     }
 
     public override void Update()
@@ -18,8 +19,8 @@ public class AgresserAiController : AIController
     {
         switch (currentState)
         {
-            case AIState.Idle:
-                ChangeState(AIState.Idle);
+            case AIState.IdleAggressor:
+                DoIdleAggressor();
                 if (CanHear(target))
                 {
                     ChangeState(AIState.TargetPlayer);
@@ -27,10 +28,8 @@ public class AgresserAiController : AIController
                 break;
             case AIState.TargetPlayer:
                 DoChooseTargetState();
-
                 ChangeState(AIState.Chase);
                 break;
-
             case AIState.Chase:
                 DoChaseState();
                 if (IsDistanceLessThan(target, 15))
@@ -42,7 +41,6 @@ public class AgresserAiController : AIController
                     ChangeState(AIState.Chase);
                 }
                 break;
-
             case AIState.Flee:
                 Flee();
                 if (CanHear(target))
@@ -53,11 +51,9 @@ public class AgresserAiController : AIController
                     }
                 }
                 break;
-
             case AIState.Attack:
                 DoAttackState();
-
-                if (IsDistanceLessThan(target, 5))
+                if (IsDistanceLessThan(target, 8))
                 {
                     ChangeState(AIState.Flee);
                 }

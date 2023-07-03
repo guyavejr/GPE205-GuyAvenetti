@@ -4,25 +4,16 @@ using UnityEngine;
 
 public class PowerupManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Pawn owner;
 
     public void Add (PowerUp poweruptoAdd)
     {
-        //TODO: Create the Add() Method
+        //Add
+        poweruptoAdd.Apply(this);
     }
 
     public void Remove(PowerUp powerupToRemove)
     {
-        //TODO: Create the Remove() Method
+        powerupToRemove.Remove(this);
     } 
 }

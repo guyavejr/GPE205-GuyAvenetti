@@ -8,7 +8,7 @@ public abstract class AIController : Controller
     
     public enum AIState
     {
-        TargetPlayer, Idle, Chase, Attack, Flee, Patrol, StationaryAttack, StationaryPatrol, Alerting
+        TargetPlayer, Idle, Chase, Attack, Flee, Patrol, StationaryAttack, StationaryPatrol, Alerting, IdleAggressor
     };
     
     public AIState currentState;
@@ -28,8 +28,8 @@ public abstract class AIController : Controller
     public Transform[] waypoints;
     public float waypointsStopDistance;
     public int currentWaypoint = 0;
-    public Transform[] alertwaypoints;
-    public int currentalertWaypoint = 0;
+    //public Transform[] alertwaypoints;
+    //public int currentalertWaypoint = 0;
 
     //Start 
     public override void Start()
@@ -56,6 +56,7 @@ public abstract class AIController : Controller
         pawn.RotateTowards(target.transform.position);
 
         pawn.MoveForward();
+
     }
     public virtual void Seek(Vector3 targetPosition)
     {
@@ -91,10 +92,9 @@ public abstract class AIController : Controller
 
     protected virtual void DoAttackState()
     {
-        //Chase
         Seek(target);
-        //shoot
-        Shoot();
+        
+        Shoot();   
     }
 
     protected virtual void DoAlertState()
@@ -168,7 +168,7 @@ public abstract class AIController : Controller
         if (waypoints.Length > currentWaypoint)
         {
             Seek(waypoints[currentWaypoint]);
-            Debug.Log(currentWaypoint);
+            
 
             if(Vector3.Distance(pawn.transform.position, waypoints[currentWaypoint].position) < waypointsStopDistance)
             {
@@ -187,9 +187,15 @@ public abstract class AIController : Controller
 
     protected virtual void Alert()
     {
-        Debug.Log("alerting");
-        Seek(alertwaypoints[currentalertWaypoint]);
+        
+        TargetNearestAggressor();
+        
+        Seek(target);
+    }
 
+    protected virtual void DoIdleAggressor()
+    {
+        TargetNearestPatrol();
     }
 
     public float hearingDistance;
@@ -199,12 +205,12 @@ public abstract class AIController : Controller
         
         if (noiseMaker == null)
         {
-            Debug.Log("Cannothear");
+            
             return false;
         }
         if (noiseMaker.volumeDistance <= 0)
         {
-            Debug.Log("Cannothear");
+            
             return false;
         }
 
@@ -212,12 +218,11 @@ public abstract class AIController : Controller
 
         if (Vector3.Distance(pawn.transform.position, target.transform.position) <= totalDistance)
         {
-            Debug.Log("ICanHearYou");
+            
             return true;
         }
         else
         {
-            Debug.Log("Cannothear");
             return false;
         }
     }
@@ -228,7 +233,7 @@ public abstract class AIController : Controller
         float angleToTarget = Vector3.Angle(agentToTargetVector, pawn.transform.forward);
         if (angleToTarget < fieldOfView)
         {
-            Debug.Log("ICanSeeYou");
+            
             return true;
         }
         else
@@ -251,6 +256,10 @@ public abstract class AIController : Controller
                     target = GameManager.instance.players[0].pawn.gameObject;
                 }
             }
+            else
+            {
+                DoIdleState();
+            }
         }
     }
     //do we have a target
@@ -263,7 +272,7 @@ public abstract class AIController : Controller
     {
         //list of pawns
         Pawn[] allTanks = FindObjectsOfType<Pawn>();
-        Pawn closestTank = allTanks[0];
+        Pawn closestTank = allTanks[1];
         float closestTankDistance = Vector3.Distance(pawn.transform.position, closestTank.transform.position);
         foreach (Pawn tank in allTanks)
         {
@@ -275,6 +284,40 @@ public abstract class AIController : Controller
         }
         target = closestTank.gameObject;
     }
+
+    protected void TargetNearestAggressor()
+    {
+        AggressorTankPawn[] aggressor = FindObjectsOfType<AggressorTankPawn>();
+        
+        AggressorTankPawn aggressorEnemyPrefab = aggressor[0];
+        float aggressorEnemyPrefabDistance = Vector3.Distance(pawn.transform.position, aggressorEnemyPrefab.transform.position);
+        foreach (AggressorTankPawn tank in aggressor)
+        {
+            if (Vector3.Distance(pawn.transform.position, tank.transform.position) <= aggressorEnemyPrefabDistance)
+            {
+                aggressorEnemyPrefab = tank;
+                aggressorEnemyPrefabDistance = Vector3.Distance(pawn.transform.position, aggressorEnemyPrefab.transform.position);
+            }
+        }
+        target = aggressorEnemyPrefab.gameObject;
+    }
+    protected void TargetNearestPatrol()
+    {
+        PatrolTankPawn[] patrol = FindObjectsOfType<PatrolTankPawn>();
+
+        PatrolTankPawn patrolEnemyPrefab = patrol[0];
+        float patrolEnemyPawnDistance = Vector3.Distance(pawn.transform.position, patrolEnemyPrefab.transform.position);
+        foreach (PatrolTankPawn tank in patrol)
+        {
+            if (Vector3.Distance(pawn.transform.position, tank.transform.position) <= patrolEnemyPawnDistance)
+            {
+                patrolEnemyPrefab = tank;
+                patrolEnemyPawnDistance = Vector3.Distance(pawn.transform.position, patrolEnemyPrefab.transform.position);
+            }
+        }
+        target = patrolEnemyPrefab.gameObject;
+    }
+
     public virtual void ChangeState ( AIState newState)
     {
         // change the current state 

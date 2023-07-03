@@ -10,12 +10,10 @@ public class Health : MonoBehaviour
     public void TakeDamage (float amount, Pawn source)
     {
         currentHealth = currentHealth - amount;
-        Debug.Log(source.name + "did" + amount + "damage to" + gameObject.name);
-        Debug.Log(currentHealth);
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         if (currentHealth <= 0)
         {
-            Die(source);
+            Die (source);
         }
     }
 
@@ -23,8 +21,6 @@ public class Health : MonoBehaviour
     {
         currentHealth = currentHealth + amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        Debug.Log(source.name + "did" + amount + "heal to" + gameObject.name);
-        Debug.Log(currentHealth);
     }
 
     public void Die(Pawn source)
@@ -37,11 +33,5 @@ public class Health : MonoBehaviour
     {
         //set health to max 
         currentHealth = maxHealth;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

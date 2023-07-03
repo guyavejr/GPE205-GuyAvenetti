@@ -10,6 +10,7 @@ public class PlayerController : Controller
     public KeyCode rotateCounterClockwiseKey;
     public KeyCode rotateClockwiseKey;
     public KeyCode shootKey;
+    public KeyCode generateMapKey;
 
     //start
     public override void Start()

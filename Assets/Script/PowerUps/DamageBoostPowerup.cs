@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class HealthPowerup : PowerUp
+public class DamageBoost : PowerUp
 {
-    public float healthToAdd;
+    public float damageToAdd;
     
 
     public override void Apply(PowerupManager target)
     {
         //Apply Health changes 
-        Health targetHealth = target.GetComponent<Health>();
-        if (targetHealth != null)
+        TankPawn targetdamageDone = target.GetComponent<TankPawn>();
+        if (targetdamageDone != null)
         {
-            targetHealth.Heal(healthToAdd, target.GetComponent<Pawn>());
+            targetdamageDone.DamageBoost(damageToAdd, target.GetComponent<TankPawn>());
         }
     }
 

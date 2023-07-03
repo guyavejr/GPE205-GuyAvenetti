@@ -28,23 +28,11 @@ public class PatrolingAIController : AIController
         {
             case AIState.TargetPlayer:
                 DoChooseTargetState();
-
-                ChangeState(AIState.Idle);
-;
-                break;
-
-            case AIState.Idle:
-                DoIdleState();
-
                 ChangeState(AIState.Patrol);
-                Debug.Log("patroling");
                 break;
 
             case AIState.Patrol:
-
                 DoPatrolState();
-
-
                 if (CanHear(target))
                 {
                     ChangeState(AIState.Alerting);
@@ -53,13 +41,10 @@ public class PatrolingAIController : AIController
 
             case AIState.Alerting:
                 DoAlertState();
-
-                if (Vector3.Distance(pawn.transform.position, alertwaypoints[currentalertWaypoint].position) < waypointsStopDistance)
+                if (IsDistanceLessThan(target, 5))
                 {
-                    Debug.Log("backtopatrol");
-                    ChangeState(AIState.Patrol);
+                    ChangeState(AIState.TargetPlayer);
                 }
-
                 break;
 
                

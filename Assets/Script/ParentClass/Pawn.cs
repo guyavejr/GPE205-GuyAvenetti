@@ -6,6 +6,7 @@ public abstract class Pawn : MonoBehaviour
 {
     //Variable for move speed
     public float moveSpeed;
+    public float maxMoveSpeed = 200f;
     
     //Variable for turn speed
     public float turnSpeed;
@@ -44,7 +45,8 @@ public abstract class Pawn : MonoBehaviour
     public abstract void RotateCounterClockwise();
     public abstract void Shoot();
     //public abstract void MoveSpeed();
-    
+    public abstract void MoveSpeedBoost(float amount, Pawn source);
+    public abstract void DamageBoost(float amount, Pawn source);
     public abstract void RotateTowards(Vector3 targetPosition);
 
 }
