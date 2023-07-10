@@ -7,7 +7,7 @@ public class Room : MonoBehaviour {
 	public GameObject doorSouth;
 	public GameObject doorEast;
 	public GameObject doorWest;
-
+	
 
 
 

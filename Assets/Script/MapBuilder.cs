@@ -11,6 +11,7 @@ public class MapBuilder : MonoBehaviour
     public float roomWidth = 50.0f;
     public float roomHeight = 50.0f;
     private Room[,] grid;
+    
 
     public int mapSeed;
     public void Start()
@@ -21,17 +22,18 @@ public class MapBuilder : MonoBehaviour
     {
         return gridPrefab[UnityEngine.Random.Range(0, gridPrefab.Length)];
     }
-    public void GeneratePickupSpawnPrefab()
-    {
+    
 
-    }
 
-    public Boolean randomMap;
+
     public int DateToInt(DateTime dateToUse)
     {
         return dateToUse.Year + dateToUse.Month + dateToUse.Day + dateToUse.Hour + dateToUse.Minute + dateToUse.Second + dateToUse.Millisecond;
         UnityEngine.Random.seed = DateToInt(DateTime.Now);
     }
+
+    
+public Boolean randomMap;
     public void GenerateMap()
     {
         if (randomMap == true)
@@ -54,6 +56,8 @@ public class MapBuilder : MonoBehaviour
                     Room tempRoom = tempRoomObj.GetComponent<Room>();
 
                     grid[currentCol, currentRow] = tempRoom;
+
+                    
 
                     //North South
                     if (currentRow == 0)

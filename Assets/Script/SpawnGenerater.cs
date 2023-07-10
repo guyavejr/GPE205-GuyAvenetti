@@ -14,14 +14,9 @@ public class SpawnGenerator : MonoBehaviour
         return spawnerPickupPrefab[UnityEngine.Random.Range(0, spawnerPickupPrefab.Length)];
     }
 
-    public int DateToInt(DateTime dateToUse)
-    {
-        return dateToUse.Year + dateToUse.Month + dateToUse.Day + dateToUse.Hour + dateToUse.Minute + dateToUse.Second + dateToUse.Millisecond;
-        UnityEngine.Random.seed = DateToInt(DateTime.Now);
-    }
     public void CreateSpawn()
     {
-         Vector3 randomPos = new Vector3(UnityEngine.Random.Range(-24f, 123f), UnityEngine.Random.Range(1f, 1f), UnityEngine.Random.Range(-24f, 123f));
+         Vector3 randomPos = new Vector3(UnityEngine.Random.Range(-22f, 120f), UnityEngine.Random.Range(1f, 1f), UnityEngine.Random.Range(-25f, 120f));
          GameObject tempPickupObj = Instantiate(RandomPickupPrefab(), randomPos, Quaternion.identity) as GameObject;
 
          tempPickupObj.transform.parent = this.transform;

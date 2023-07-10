@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1526554627245181995}
   - component: {fileID: 9048316487653264795}
-  - component: {fileID: 1644893931447919722}
+  - component: {fileID: 8871239769451426555}
   m_Layer: 0
   m_Name: Room5Prefab
   m_TagString: Untagged
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352504089423483594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -58,7 +58,7 @@ MonoBehaviour:
   doorSouth: {fileID: 6906716772546360097}
   doorEast: {fileID: 5156489292824427904}
   doorWest: {fileID: 3200244910058419574}
---- !u!114 &1644893931447919722
+--- !u!114 &8871239769451426555
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -609,6 +609,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StandbyEnemyPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 856427073445203546, guid: 743440c18f152444db083ad04528656d, type: 3}
+      propertyPath: pawn
+      value: 
+      objectReference: {fileID: 6199943563993732180}
     - target: {fileID: 979073721511020905, guid: 743440c18f152444db083ad04528656d, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -658,6 +662,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 743440c18f152444db083ad04528656d, type: 3}
+--- !u!1 &6199943563993732180 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 494708697019569107, guid: 743440c18f152444db083ad04528656d, type: 3}
+  m_PrefabInstance: {fileID: 5825143484083144583}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6719739521696567022 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 979073721511020905, guid: 743440c18f152444db083ad04528656d, type: 3}
@@ -671,6 +680,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1526554627245181995}
     m_Modifications:
+    - target: {fileID: -8495547115616764569, guid: 2df5e71a62be9d94a8a75e11cd4de82f, type: 3}
+      propertyPath: pawn
+      value: 
+      objectReference: {fileID: 8521822708048120079}
     - target: {fileID: 2513456441977463571, guid: 2df5e71a62be9d94a8a75e11cd4de82f, type: 3}
       propertyPath: m_Name
       value: StationaryEnemyPrefab
@@ -724,6 +737,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2df5e71a62be9d94a8a75e11cd4de82f, type: 3}
+--- !u!1 &8521822708048120079 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2513456441977463571, guid: 2df5e71a62be9d94a8a75e11cd4de82f, type: 3}
+  m_PrefabInstance: {fileID: 6098454210341972508}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9009530454048543669 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3002291256581405097, guid: 2df5e71a62be9d94a8a75e11cd4de82f, type: 3}
@@ -741,6 +759,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StandbyEnemyPrefab (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 856427073445203546, guid: 743440c18f152444db083ad04528656d, type: 3}
+      propertyPath: pawn
+      value: 
+      objectReference: {fileID: 6625680413635657597}
     - target: {fileID: 979073721511020905, guid: 743440c18f152444db083ad04528656d, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -795,6 +817,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 979073721511020905, guid: 743440c18f152444db083ad04528656d, type: 3}
   m_PrefabInstance: {fileID: 6714492982875253934}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6625680413635657597 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 494708697019569107, guid: 743440c18f152444db083ad04528656d, type: 3}
+  m_PrefabInstance: {fileID: 6714492982875253934}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6715425251962369814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -803,6 +830,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1526554627245181995}
     m_Modifications:
+    - target: {fileID: 3500639776943152829, guid: 6cb05d75504b36a47a247be3650d04e4, type: 3}
+      propertyPath: pawn
+      value: 
+      objectReference: {fileID: 1880964863820901903}
     - target: {fileID: 5128329198870370585, guid: 6cb05d75504b36a47a247be3650d04e4, type: 3}
       propertyPath: m_Name
       value: AggressorEnemyPrefab
@@ -859,5 +890,10 @@ PrefabInstance:
 --- !u!4 &1247874501827982517 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5503588481930019747, guid: 6cb05d75504b36a47a247be3650d04e4, type: 3}
+  m_PrefabInstance: {fileID: 6715425251962369814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1880964863820901903 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5128329198870370585, guid: 6cb05d75504b36a47a247be3650d04e4, type: 3}
   m_PrefabInstance: {fileID: 6715425251962369814}
   m_PrefabAsset: {fileID: 0}

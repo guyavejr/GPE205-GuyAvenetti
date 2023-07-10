@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6174219574500893422}
   - component: {fileID: 9070074848745112538}
+  - component: {fileID: 7797615375825674479}
   m_Layer: 0
   m_Name: PlayerControllerPrefab
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9070074848745112538
 MonoBehaviour:
@@ -49,3 +50,17 @@ MonoBehaviour:
   moveBackwardsKey: 115
   rotateCounterClockwiseKey: 97
   rotateClockwiseKey: 100
+  shootKey: 0
+  generateMapKey: 0
+--- !u!114 &7797615375825674479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602856996275148880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac69a7f393bd0c9438e8142792235be9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

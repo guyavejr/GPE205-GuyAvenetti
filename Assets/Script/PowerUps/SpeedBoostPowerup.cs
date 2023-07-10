@@ -11,7 +11,7 @@ public class SpeedBoost : PowerUp
 
     public override void Apply(PowerupManager target)
     {
-        //Apply Health changes 
+        
         TankPawn targetmoveSpeed = target.GetComponent<TankPawn>();
         if (targetmoveSpeed != null)
         {

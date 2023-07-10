@@ -25,6 +25,7 @@ public abstract class Pawn : MonoBehaviour
 
     public float BulletLifespan;
 
+
     
     // Start is called before the first frame update
     public virtual void Start()

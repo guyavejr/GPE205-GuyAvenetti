@@ -42,8 +42,6 @@ public class StandbyAiController : AIController
                 {
                     ChangeState(AIState.Attack);
                 }
-               
-
                 if (!CanHear(target))
                 {
                     ChangeState(AIState.Idle);

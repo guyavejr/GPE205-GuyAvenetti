@@ -9,7 +9,7 @@ public abstract class AIController : Controller
     public enum AIState
     {
         TargetPlayer, Idle, Chase, Attack, Flee, Patrol, StationaryAttack, StationaryPatrol, Alerting, IdleAggressor
-    };
+    }
     
     public AIState currentState;
 
@@ -28,8 +28,7 @@ public abstract class AIController : Controller
     public Transform[] waypoints;
     public float waypointsStopDistance;
     public int currentWaypoint = 0;
-    //public Transform[] alertwaypoints;
-    //public int currentalertWaypoint = 0;
+
 
     //Start 
     public override void Start()

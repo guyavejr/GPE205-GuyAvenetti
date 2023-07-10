@@ -1,16 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public GameStateMachine gameStateMachine;
     //prefabs
     public GameObject PlayerControllerPrefab;
     public GameObject tankPawnPrefab;
     public Transform playerSpawnTransform;
     //list that holds players
     public List<PlayerController> players;
+    
+    public float lives;
+    public int points;
+    
+
     //awake runs before start
     private void Awake()
     {
@@ -31,6 +39,17 @@ public class GameManager : MonoBehaviour
         SpawnPlayer();
     }
 
+    public void RestartLevel()
+    {
+        Destroy(gameObject);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+        
+    }
+    public void MultiPlayer()
+    {
+        Destroy(gameObject);
+        SceneManager.LoadSceneAsync("MultiPlayerTest");
+    }
     public void SpawnPlayer()
     {
         //spawn player controller 
@@ -45,4 +64,25 @@ public class GameManager : MonoBehaviour
 
         newController.pawn = newPawn;
     }
+
+    public void AddPoint()
+    {
+        points = points + 1;
+        
+        Debug.Log(points);
+    }
+
+    public void LoseLife()
+    {
+        Debug.Log("loselifeGM");
+        if (lives >= 1)
+        {
+            lives = lives - 1;
+        }
+        if (lives == 0)
+        {
+            gameStateMachine.GameOver(gameObject);
+        }
+    }
+
 }
