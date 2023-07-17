@@ -6,9 +6,9 @@ public class TitleGameState : MonoBehaviour
 {
     public void ChangeToMainMenu()
     {
-        if (GameManager.instance != null)
+        if (GameStateMachine.instance != null)
         {
-            GameManager.instance.gameStateMachine.MainMenu(gameObject);
+           GameStateMachine.instance.MainMenu(gameObject);
         }
     }
 }

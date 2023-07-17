@@ -120,3 +120,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerup:
     speedToAdd: 50
+  sound: {fileID: 0}

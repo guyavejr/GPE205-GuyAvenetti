@@ -2,30 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameStateMachine : MonoBehaviour
 {   public GameStates currentGameState;
-
+    public static GameStateMachine instance;
     //GameStates
     public GameObject TitleScreenStateObject;
     public GameObject MainMenuStateObject;
     public GameObject OptionsScreenStateObject;
     public GameObject CreditsScreenStateObject;
     public GameObject GamePlayStateObject;
-    public GameObject GameOverScreenStateObject;
+    public GameObject TutorialObject;
     public enum GameStates
     {
-        TitleScreen, MainMenu, Options, GamePlay, GameOver, Credits
+        TitleScreen, MainMenu, Options, GamePlay, Tutorial, Credits
     }
     private void Start()
     {
-        TitleScreen(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        ChooseGameState();
     }
     private void Update()
     {
         
     }
+    public virtual void ChooseGameState()
+    {
+        switch (currentGameState)
+        {
+            case GameStates.TitleScreen:
+                TitleScreen(gameObject);
+                break;
+            case GameStates.MainMenu:
+                MainMenu(gameObject);
+                break;
 
+        }
+    }
     public virtual void ChangeGameState(GameStates newGameState)
     {
         // change the current state 
@@ -41,15 +62,16 @@ public class GameStateMachine : MonoBehaviour
     }
     public virtual void Options(GameObject gameObject)
     {
-            ActivateOptionsScreen(); 
+        ActivateOptionsScreen(); 
     }
     public virtual void GamePlay(GameObject gameObject)
     {
         ActivateGamePlay();
     }
-    public virtual void GameOver(GameObject gameObject)
+    public virtual void Tutorial(GameObject gameObject)
     {
-        ActivateGameOverScreen();  
+        
+        ActivateTutorialScreen();
     }
     public virtual void Credits(GameObject gameObject)
     {
@@ -62,43 +84,41 @@ public class GameStateMachine : MonoBehaviour
         OptionsScreenStateObject.SetActive(false);
         CreditsScreenStateObject.SetActive(false);
         GamePlayStateObject.SetActive(false);
-        GameOverScreenStateObject.SetActive(false);
+        TutorialObject.SetActive(false);
     }
     public void ActivateTitleScreen()
     {
         DeactivateAllStates();
         TitleScreenStateObject.SetActive(true);
-        Time.timeScale = 0f;
+        
     }
     public void ActivateMainMenu()
     {
         DeactivateAllStates();
         MainMenuStateObject.SetActive(true);
-        Time.timeScale = 0f;
+        
     }
     public void ActivateOptionsScreen()
     {
         DeactivateAllStates();
         OptionsScreenStateObject.SetActive(true);
-        Time.timeScale = 0f;
+        
     }
     public void ActivateCreditsScreen()
     {
         DeactivateAllStates();
         CreditsScreenStateObject.SetActive(true);
-        Time.timeScale = 0f;
+        
     }
     public void ActivateGamePlay()
     {
-        DeactivateAllStates();
-        GamePlayStateObject.SetActive(true);
-        Time.timeScale = 1f;
+        SceneManager.LoadSceneAsync("World1");
     }
-    public void ActivateGameOverScreen()
+    public void ActivateTutorialScreen()
     {
-        DeactivateAllStates();
-        GameOverScreenStateObject.SetActive(true);
-        Time.timeScale = 0f;
+        
+        TutorialObject.SetActive(true);
+        
     }
 }
 

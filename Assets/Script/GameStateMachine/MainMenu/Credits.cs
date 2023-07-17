@@ -6,9 +6,9 @@ public class Credits : MonoBehaviour
 {
     public void CreditsButton()
     {
-        if (GameManager.instance != null)
+        if (GameStateMachine.instance != null)
         {
-            GameManager.instance.gameStateMachine.Credits(gameObject);
+           GameStateMachine.instance.Credits(gameObject);
         }
     }
 }

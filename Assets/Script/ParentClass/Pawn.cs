@@ -39,7 +39,8 @@ public abstract class Pawn : MonoBehaviour
     {
         
     }
-
+    public abstract void ChangeHeightUp();
+    public abstract void ChangeHeightDown();
     public abstract void MoveForward();
     public abstract void MoveBackwards();
     public abstract void RotateClockwise();
@@ -49,5 +50,6 @@ public abstract class Pawn : MonoBehaviour
     public abstract void MoveSpeedBoost(float amount, Pawn source);
     public abstract void DamageBoost(float amount, Pawn source);
     public abstract void RotateTowards(Vector3 targetPosition);
+    public abstract void ChangeHeightTowards(Vector3 targetPosition);
 
 }

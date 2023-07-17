@@ -51,7 +51,7 @@ MonoBehaviour:
   rotateCounterClockwiseKey: 97
   rotateClockwiseKey: 100
   shootKey: 0
-  generateMapKey: 0
+  pauseMenuKey: 0
 --- !u!114 &7797615375825674479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,3 +64,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac69a7f393bd0c9438e8142792235be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pawn: {fileID: 0}
+  respawnPoint: {fileID: 0}

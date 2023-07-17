@@ -8,7 +8,7 @@ public class GameOverToMainMenu : MonoBehaviour
     {
         if (GameManager.instance != null)
         {
-            GameManager.instance.gameStateMachine.MainMenu(gameObject);
+            //GameManager.instance.gameStateMachine.MainMenu(gameObject);
         }
     }
 }

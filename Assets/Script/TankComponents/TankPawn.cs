@@ -46,6 +46,14 @@ public class TankPawn : Pawn
         mover.Rotate(-turnSpeed);
     }
 
+    public override void ChangeHeightUp()
+    {
+        mover.ChangeHeight(turnSpeed);
+    }
+    public override void ChangeHeightDown()
+    {
+        mover.ChangeHeight(-turnSpeed);
+    }
     public override void Shoot()
     {
         if (timeUntilNextEvent >= fireRate)
@@ -53,6 +61,14 @@ public class TankPawn : Pawn
             shooter.Shoot(BulletPrefab, fireForce, damageDone, BulletLifespan, fireRate);
         }
         
+    }
+    public override void ChangeHeightTowards(Vector3 targetPosition)
+    {
+        Vector3 vectorToTarget = targetPosition - transform.position;
+        //find the rotation 
+        Quaternion targetRotation = Quaternion.LookRotation(vectorToTarget, Vector3.up);
+        //rotate at turn speed
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
     }
     public override void RotateTowards(Vector3 targetPosition)
     {

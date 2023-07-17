@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2061565294189953232}
   - component: {fileID: 1288105015759257502}
   - component: {fileID: -410576048146342082}
-  - component: {fileID: 3474819136109520413}
+  - component: {fileID: 3109731361168564798}
   m_Layer: 0
   m_Name: BulletPrefab
   m_TagString: Untagged
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageDone: 10
   owner: {fileID: 0}
---- !u!82 &3474819136109520413
+--- !u!82 &3109731361168564798
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,18 +161,18 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: af66162561d2eed40ad49268cab318bb, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.691
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 212
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 25
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -205,7 +205,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0

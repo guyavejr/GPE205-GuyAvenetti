@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class BeginPlay : MonoBehaviour
 {
+    
     public void BegginPlayButton()
     {
-        if (GameManager.instance != null)
+        if (GameStateMachine.instance != null)
         {
-            GameManager.instance.gameStateMachine.GamePlay(gameObject);
+            GameStateMachine.instance.GamePlay(gameObject);
         }
     }
 }

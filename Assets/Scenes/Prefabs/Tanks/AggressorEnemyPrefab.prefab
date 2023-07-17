@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546c653b7a1c83b4589a9afd8db1e3a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 160
+  moveSpeed: 115
   maxMoveSpeed: 200
   turnSpeed: 360
   mover: {fileID: 0}
@@ -356,7 +356,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5128329198870370585}
   serializedVersion: 4
-  m_Mass: 10
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -421,9 +421,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdbaeaa2d1eab154fb1ad13b82a9bdb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 10
+  currentHealth: 15
   maxHealth: 10
-  lives: 0
   pawn: {fileID: 5128329198870370585}
   respawnPoint: {fileID: 0}
   healthBar: {fileID: 7381488515038408499}

@@ -5,12 +5,14 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerController : Controller
 {
+    [SerializeField] Flashlight flashlight;
     public KeyCode moveForwardKey;
     public KeyCode moveBackwardsKey;
     public KeyCode rotateCounterClockwiseKey;
     public KeyCode rotateClockwiseKey;
     public KeyCode shootKey;
-    public KeyCode generateMapKey;
+    public KeyCode pauseMenuKey;
+    public KeyCode toggleFlashlightKey;
 
     //start
     public override void Start()
@@ -72,7 +74,16 @@ public class PlayerController : Controller
         {
             pawn.Shoot();
         }
+
+        if (Input.GetKeyDown(pauseMenuKey))
+        {
+            GameManager.instance.menuStateMachine.ActivateOptionsScreen(gameObject);
+        }
+
+        if (Input.GetKeyDown(toggleFlashlightKey))
+        {
+            flashlight.ToggleFlashlight();
+        }
+
     }
-
-
 }

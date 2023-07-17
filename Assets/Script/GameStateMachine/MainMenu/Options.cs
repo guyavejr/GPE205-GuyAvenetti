@@ -6,9 +6,9 @@ public class Options : MonoBehaviour
 {
     public void OptionsButton()
     {
-        if (GameManager.instance != null)
+        if (GameStateMachine.instance != null)
         {
-            GameManager.instance.gameStateMachine.Options(gameObject);
+            GameStateMachine.instance.Options(gameObject);
         }
     }
 }

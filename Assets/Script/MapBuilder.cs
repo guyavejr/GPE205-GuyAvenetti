@@ -4,26 +4,41 @@ using UnityEngine;
 using System;
 public class MapBuilder : MonoBehaviour
 {
+    public static MapBuilder instance;
     public GameObject[] gridPrefab;
-    
     public int rows;
     public int cols;
     public float roomWidth = 50.0f;
     public float roomHeight = 50.0f;
     private Room[,] grid;
     
-
     public int mapSeed;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     public void Start()
     {
-        GenerateMap();
+        
     }
     public GameObject RandomRoomPrefab()
     {
         return gridPrefab[UnityEngine.Random.Range(0, gridPrefab.Length)];
     }
     
-
+    public void DestroyMap()
+    {
+        Destroy(gameObject);
+    }
 
 
     public int DateToInt(DateTime dateToUse)

@@ -82,6 +82,10 @@ public abstract class AIController : Controller
     protected virtual void DoChaseState()
     {
         Seek(target);
+        if (target == null)
+        {
+            TargetPlayer();
+        }
     }
 
     protected virtual void DoIdleState()
@@ -92,7 +96,8 @@ public abstract class AIController : Controller
     protected virtual void DoAttackState()
     {
         Seek(target);
-        
+        if (target == null)
+            return;
         Shoot();   
     }
 
@@ -114,14 +119,24 @@ public abstract class AIController : Controller
 
     protected virtual void DoStationaryAttackState()
     {
+        pawn.ChangeHeightTowards(target.transform.position);
         StationarySeek(target);
-
+        if (target == null)
+        {
+            TargetPlayer();
+        }
         Shoot();
     }
 
     protected virtual void DoStationaryPatrol()
     {
         StationarySeek(target);
+        if (target == null)
+        {
+            TargetPlayer();
+        }
+
+            
     }
 
     protected virtual void StationarySeek(GameObject target)
@@ -190,6 +205,10 @@ public abstract class AIController : Controller
         TargetNearestAggressor();
         
         Seek(target);
+        if (target == null)
+        {
+            TargetPlayer();
+        }
     }
 
     protected virtual void DoIdleAggressor()
@@ -299,12 +318,19 @@ public abstract class AIController : Controller
             }
         }
         target = aggressorEnemyPrefab.gameObject;
+
+        if (target == null)
+            return;
+
     }
     protected void TargetNearestPatrol()
     {
         PatrolTankPawn[] patrol = FindObjectsOfType<PatrolTankPawn>();
 
         PatrolTankPawn patrolEnemyPrefab = patrol[0];
+        if (patrol == null)
+            return;
+
         float patrolEnemyPawnDistance = Vector3.Distance(pawn.transform.position, patrolEnemyPrefab.transform.position);
         foreach (PatrolTankPawn tank in patrol)
         {
@@ -315,6 +341,7 @@ public abstract class AIController : Controller
             }
         }
         target = patrolEnemyPrefab.gameObject;
+
     }
 
     public virtual void ChangeState ( AIState newState)

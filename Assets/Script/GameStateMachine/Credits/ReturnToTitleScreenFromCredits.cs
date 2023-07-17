@@ -4,9 +4,6 @@ public class ReturnToTitleScreenFromCredits : MonoBehaviour
 {
     public void ToTitleScreenButton()
     {
-        if (GameManager.instance != null)
-        {
-            GameManager.instance.gameStateMachine.TitleScreen(gameObject);
-        }
+        GameManager.instance.ExitToMainMenuFromWorld1();
     }
 }

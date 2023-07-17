@@ -48,8 +48,11 @@ public class Health : MonoBehaviour
 
     public void Die(Pawn source)
     {
-        GameManager.instance.AddPoint();
         Destroy(gameObject);
+        if (GameManager.instance.mapGenerator != null)
+        {
+            GameManager.instance.AddPoint();
+        }
     }
     private void Update()
     {

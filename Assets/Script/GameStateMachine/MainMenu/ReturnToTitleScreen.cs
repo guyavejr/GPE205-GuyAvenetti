@@ -6,9 +6,9 @@ public class ReturnToTitleScreen : MonoBehaviour
 {
     public void ReturnToTitleScreenButton()
     {
-        if (GameManager.instance != null)
+        if (GameStateMachine.instance != null)
         {
-            GameManager.instance.gameStateMachine.TitleScreen(gameObject);
+            GameStateMachine.instance.TitleScreen(gameObject);
         }
     }
 }

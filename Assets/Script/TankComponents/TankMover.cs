@@ -23,4 +23,9 @@ public class TankMover : Mover
     {
         transform.Rotate(Vector3.up, speed * Time.deltaTime);
     }
+
+    public override void ChangeHeight(float speed)
+    {
+       transform.Rotate(Vector3.right * speed * Time.deltaTime);
+    }
 }

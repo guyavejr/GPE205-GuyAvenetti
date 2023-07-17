@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpeedBoostPickup : MonoBehaviour
 {
     public SpeedBoost powerup;
+    
     public void OnTriggerEnter(Collider other)
     {
         PowerupManager powerupManager = other.GetComponent<PowerupManager>();
@@ -14,5 +15,7 @@ public class SpeedBoostPickup : MonoBehaviour
             
             Destroy(gameObject);
         }
+        
+
     }
 }

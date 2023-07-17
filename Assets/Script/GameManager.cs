@@ -7,18 +7,21 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public GameStateMachine gameStateMachine;
+    public MenuStateMachine menuStateMachine;
+    
+    
     //prefabs
     public GameObject PlayerControllerPrefab;
     public GameObject tankPawnPrefab;
+    public GameObject mapGenerator;
     public Transform playerSpawnTransform;
     //list that holds players
     public List<PlayerController> players;
     
     public float lives;
     public int points;
-    
 
+    public string targetSceneName = "World1";
     //awake runs before start
     private void Awake()
     {
@@ -37,14 +40,39 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SpawnPlayer();
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == targetSceneName)
+        {
+            Instantiate(mapGenerator);
+            MapBuilder.instance.GenerateMap();
+        }
+        else
+        {
+            return;
+        }
+        
+
     }
 
-    public void RestartLevel()
+    public void ContinueToTheBossWorld()
     {
         Destroy(gameObject);
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("World2");
+    }
+    public void RestartLevelWorld1()
+    {
+        Destroy(gameObject);
+        SceneManager.LoadScene("World1");
         
     }
+
+    public void ExitToMainMenuFromWorld1()
+    {
+        MapBuilder.instance.DestroyMap();
+        SceneManager.LoadSceneAsync("Main");
+        Destroy(gameObject);
+    }
+
     public void MultiPlayer()
     {
         Destroy(gameObject);
@@ -69,19 +97,21 @@ public class GameManager : MonoBehaviour
     {
         points = points + 1;
         
-        Debug.Log(points);
+        if (points >= MapBuilder.instance.rows * MapBuilder.instance.cols + 3)
+        {
+            menuStateMachine.ActivateWinScreen(gameObject);
+        }
     }
 
     public void LoseLife()
     {
-        Debug.Log("loselifeGM");
         if (lives >= 1)
         {
             lives = lives - 1;
         }
         if (lives == 0)
         {
-            gameStateMachine.GameOver(gameObject);
+            menuStateMachine.ActivateLoseScreen(gameObject);
         }
     }
 

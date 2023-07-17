@@ -30,7 +30,7 @@ public class StationaryAIController : AIController
                 break;
             case AIState.Idle:
                 DoStationaryPatrol();
-                if (CanSee(target))
+                if (IsDistanceLessThan(target, 25))
                 {
                     ChangeState(AIState.StationaryAttack);
                 }

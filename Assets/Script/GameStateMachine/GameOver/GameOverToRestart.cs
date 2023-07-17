@@ -8,7 +8,7 @@ public class GameOverToRestart : MonoBehaviour
     {
         if (GameManager.instance != null)
         {
-            GameManager.instance.RestartLevel();
+            
         }
     }
 }
